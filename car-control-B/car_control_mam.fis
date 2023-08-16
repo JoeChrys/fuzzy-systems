@@ -1,0 +1,55 @@
+[System]
+Name='car_control_mam'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='dh'
+Range=[0 1]
+NumMFs=3
+MF1='S':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='M':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='L':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Input2]
+Name='dv'
+Range=[0 1]
+NumMFs=3
+MF1='S':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='M':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='L':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Input3]
+Name='theta'
+Range=[-180 180]
+NumMFs=3
+MF1='N':'trimf',[-330 -180 -30]
+MF2='ZE':'trimf',[-150 0 150]
+MF3='P':'trimf',[30 180 330]
+
+[Output1]
+Name='dtheta'
+Range=[-130 130]
+NumMFs=3
+MF1='N':'trimf',[-238.333333333333 -130 -21.6666666666667]
+MF2='ZE':'trimf',[-108.333333333333 0 108.333333333333]
+MF3='P':'trimf',[21.6666666666667 130 238.333333333333]
+
+[Rules]
+1 1 0, 1 (1) : 1
+2 1 0, 1 (1) : 1
+3 1 0, 1 (1) : 1
+1 2 0, 1 (1) : 1
+2 2 0, 1 (1) : 1
+3 2 0, 1 (1) : 1
+1 3 0, 1 (1) : 1
+2 3 0, 1 (1) : 1
+3 3 0, 1 (1) : 1
