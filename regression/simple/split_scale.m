@@ -21,7 +21,7 @@ function [trnData,chkData,tstData] = split_scale(data,preproc)
             trnX=minmaxdiff(trnX, xmin, xmax);
             chkX=minmaxdiff(chkX, xmin, xmax);
             tstX=minmaxdiff(tstX, xmin, xmax);
-        case 'ZeroMeanVar'
+        case 'Z-Score'
             mu=mean(data,1);
             sig=std(data,1);
             trnX=zeromeanvar(trnX, mu, sig);
