@@ -4,8 +4,8 @@ function [RMSE, R2, NMSE, NDEI] = stats_graphs(valFIS, chkData, tstData, trnErro
     Rsq = @(ypred,y) 1-sum((ypred-y).^2)/sum((y-mean(y)).^2);
 
     % Stats calculation
-    Y = evalfis(tstData(:,1:end-1),valFIS);
-    R2 = Rsq(Y,tstData(:,end));
+    Y = evalfis(valFIS, tstData(:,1:end-1));
+    R2 = Rsq(Y, tstData(:,end));
     RMSE = sqrt(mse(Y,tstData(:,end)));
     NMSE = sum((Y - tstData(:,end)).^2) / sum((tstData(:,end) - mean(tstData(:,end))).^2);
     NDEI = sqrt(NMSE);
