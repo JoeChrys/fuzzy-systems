@@ -22,14 +22,14 @@ function [trnData,chkData,tstData] = partition_normalize(data)
         class2Data(round(class2Count*0.8)+1:end, :)];
 
     % Add max-min values to prevent evaluation warnings
-    [~, maxIdx] = max(data(:,1:end-1));
-    [~, minIdx] = min(data(:,1:end-1));
-    for i=1:length(maxIdx)
-        trnData = [trnData; data(maxIdx(i),:)];
-    end
-    for i=1:length(minIdx)
-        trnData = [trnData; data(minIdx(i),:)];
-    end
+    % [~, maxIdx] = max(data(:,1:end-1));
+    % [~, minIdx] = min(data(:,1:end-1));
+    % for i=1:length(maxIdx)
+    %     trnData = [trnData; data(maxIdx(i),:)];
+    % end
+    % for i=1:length(minIdx)
+    %     trnData = [trnData; data(minIdx(i),:)];
+    % end
 
     % Shuffle the subsets rows
     dataPerm = randperm(length(trnData));
